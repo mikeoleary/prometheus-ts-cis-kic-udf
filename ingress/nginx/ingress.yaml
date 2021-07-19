@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: nginx-ingress
+  name: nginx-ingress
+  annotations:
+    virtual-server.f5.com/ip: 10.1.10.10
+    virtual-server.f5.com/partition: kubernetes
+spec:
+  ingressClassName: f5
+  defaultBackend:
+    service:
+      name: nginx-ingress
+      port:
+        number: 80
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx-ingress
+            port:
+              number: 80
+

@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: hello-world
+  name: hello-world
+  annotations:
+    nginx.org/server-snippets: "server_name ~^.*$;"
+    nginx.org/rewrites: "serviceName=f5-hello-world rewrite=/"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "*.com"
+    http:
+      paths:
+      - path: /nginx
+        pathType: Prefix
+        backend:
+          service:
+            name: hello-world
+            port:
+              number: 80
+      - path: /f5
+        pathType: Prefix
+        backend:
+          service:
+            name: f5-hello-world
+            port:
+              number: 8080
