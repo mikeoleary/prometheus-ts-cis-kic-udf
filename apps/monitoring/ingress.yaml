@@ -6,6 +6,7 @@ metadata:
   annotations:
     virtual-server.f5.com/ip: 10.1.10.10
     virtual-server.f5.com/partition: kubernetes
+    virtual-server.f5.com/http-port: "9090"
 spec:
   ingressClassName: f5
   rules:
