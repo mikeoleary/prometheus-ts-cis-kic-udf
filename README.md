@@ -54,7 +54,7 @@ Install KIC using the open source, freely-available image from Docker Hub. Offic
 
     #Expose NGINX ingress by creating a service, and then create an Ingress resource that F5 CIS will use to create a VIP on BIG-IP.
     kubectl apply -f ingress/nginx/service/service.yaml
-	kubectl apply -f ingress/nginx/ingress.yaml
+    kubectl apply -f ingress/nginx/ingress.yaml
     
 ````
 ## Demo App 1 (nginx helloworld page)
